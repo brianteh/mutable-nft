@@ -36,4 +36,4 @@ yarn-error.log*
 next-env.d.ts
 
 # misc file
-mutable-nft/pages/game.tsx
+./pages/game.tsx
