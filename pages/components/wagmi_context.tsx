@@ -29,8 +29,12 @@ const client = createClient({
 interface WagmiProviderProps{
     children: ReactNode
 }
-export const WagmiProvider: FC<WagmiProviderProps> = ({children}) => {
-    return <WagmiConfig client={client}>{children}</WagmiConfig>
+function WagmiProvider({children}:WagmiProviderProps){
+    return (<><WagmiConfig client={client}>{children}</WagmiConfig></>)
 }
+export default WagmiProvider
+// export const WagmiProvider: FC<WagmiProviderProps> = ({children}) => {
+//     return <WagmiConfig client={client}>{children}</WagmiConfig>
+// }
 
 

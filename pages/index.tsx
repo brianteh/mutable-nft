@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 const Login = dynamic(() => import("./components/login"), { ssr: false });
 
-import { WagmiProvider } from "./components/wagmi_context"
+import  WagmiProvider  from "./components/wagmi_context"
 function App(){
    return (
     <>
