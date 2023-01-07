@@ -10,7 +10,7 @@ import { FC, ReactNode } from 'react'
 // Two popular providers are Alchemy (alchemy.com) and Infura (infura.io)
 const { chains, provider, webSocketProvider } = configureChains(
  [polygonMumbai],
- [infuraProvider({ apiKey:'b94db70b002d45a4a2ca2c504a535242'}), publicProvider()],
+ [infuraProvider({ apiKey: process.env.infura_api_key}), publicProvider()],
 )
 
 // Set up client
