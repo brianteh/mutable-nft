@@ -1,14 +1,15 @@
 import dynamic from "next/dynamic";
-const Login = dynamic(() => import("./components/login"), { ssr: false });
+const Test = dynamic(() => import("./components/test"), { ssr: false });
 
 import { WagmiProvider } from "./components/wagmi_context"
-function App(){
+
+function Hub(){
    return (
     <>
     <WagmiProvider>
-      <Login></Login>
+      <Test></Test>
     </WagmiProvider>
     </>
    )
 }
-export default App
+export default Hub
