@@ -5,6 +5,7 @@ import {Game as GameType} from 'phaser';
 function Game_Platform() {
    
     const [game, setGame] = useState<GameType>();
+
     useEffect(()=>{
         async function initPhaser(){
             const Phaser = await import('phaser');
@@ -65,7 +66,7 @@ function Game_Platform() {
 
     return (
     <div id="game-content" key= "game-content">
-        {}
+        {/*the game canvas is rendered here */}
     </div>
     );
 };
