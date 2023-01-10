@@ -3,10 +3,12 @@ async function loadAllScenes(){
     //import scenes here
     const {default :preloader_scene} = await import("../scenes/preloader_scene.js")
     const {default :testgame_scene} = await import("../scenes/testgame_scene.js")
+    const {default : gridengine_scene} = await import('../scenes/gridengine_scene')
 
     const scenes = [
         preloader_scene,
-        testgame_scene
+        testgame_scene,
+        gridengine_scene
     ];
 
     return scenes

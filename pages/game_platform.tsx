@@ -1,3 +1,5 @@
+// to have multiple games on the same domain, this page can be duplicated
+//the only change needed is the imported scenes
 import React from 'react';
 import { useState, useEffect } from 'react';
 import {Game as GameType} from 'phaser';
@@ -11,7 +13,10 @@ function Game_Platform() {
     useEffect(()=>{
         async function initPhaser(){
             /*Start of the configuration settings*/
+
             const Phaser = await import('phaser');
+
+            //import engines here
             const {default: GridEngine} = await import('grid-engine');
 
             //game configuration and settings
@@ -30,22 +35,22 @@ function Game_Platform() {
         
                 scene: await allScenes, //scenes are loaded from game_x/scenes
                 
-                // physics:{
-                //     default: 'arcade',
-                //     arcade:{
-                //         gravity:{y:0}
-                //     }
-                // },
+                physics:{
+                    default: 'arcade',
+                    arcade:{
+                        gravity:{y:0}
+                    }
+                },
         
-                // plugins:{
-                //     scene: [
-                //         {
-                //           key: "gridEngine",
-                //           plugin: GridEngine,
-                //           mapping: "gridEngine",
-                //         },
-                //       ],
-                // },
+                plugins:{
+                    scene: [
+                        {
+                          key: "gridEngine",
+                          plugin: GridEngine,
+                          mapping: "gridEngine",
+                        },
+                      ],
+                },
         
                 backgroundColor: '#1c1c1c'
                 
