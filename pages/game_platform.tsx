@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import {Game as GameType} from 'phaser';
+import { allScenes } from '../game_1/scripts/load_all_scenes';
+
 
 function Game_Platform() {
    
@@ -8,35 +10,33 @@ function Game_Platform() {
 
     useEffect(()=>{
         async function initPhaser(){
+            /*Start of the configuration settings*/
             const Phaser = await import('phaser');
             const {default: GridEngine} = await import('grid-engine');
 
-            //import scenes here
-            const {default: preloader_scene } = await import('../game_1/scenes/preloader_scene');
-            const {default: testgame_scene } = await import('../game_1/scenes/testgame_scene');
-
             //game configuration and settings
-            const config = {
+            const config ={
+        
                 type: Phaser.AUTO,
                 title: 'xxx-game',
                 parent: 'game-content', // correspond to the id of div down below,
                 width: 2000,
                 height: 2000,
                 pixelArt: true,
+        
                 // scale:{
                 //     autoCenter : Phaser.Scale.CENTER_BOTH
                 // },
-                scene:[
-                    //scenes are loaded from game_x/scenes
-                    preloader_scene,
-                    testgame_scene
-                ],
+        
+                scene: await allScenes, //scenes are loaded from game_x/scenes
+                
                 // physics:{
                 //     default: 'arcade',
                 //     arcade:{
                 //         gravity:{y:0}
                 //     }
                 // },
+        
                 // plugins:{
                 //     scene: [
                 //         {
@@ -46,9 +46,11 @@ function Game_Platform() {
                 //         },
                 //       ],
                 // },
+        
                 backgroundColor: '#1c1c1c'
-               
-            };
+                
+            }
+            /*End of the configuration settings*/
 
             //set game using the config
             const phaserGame = new Phaser.Game(config);
