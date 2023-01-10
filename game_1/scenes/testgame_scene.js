@@ -24,6 +24,6 @@ export default class testgame_scene extends Scene{
 
     }
     update(){
-        
+        this.gridEngine
     }
 }
