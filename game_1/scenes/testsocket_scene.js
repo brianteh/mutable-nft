@@ -24,8 +24,8 @@ export default class testgame_scene extends Scene{
 
     }
     update(){
-        // document.getElementById("logout").onclick=()=>{
-        //     this.socket.emit()
-        // }
+        document.getElementById("logout").onclick=()=>{
+            this.socket.emit()
+        }
     }
 }

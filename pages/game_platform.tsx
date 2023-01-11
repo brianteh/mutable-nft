@@ -1,9 +1,10 @@
 // to have multiple games on the same domain, this page can be duplicated
 //the only change needed is the imported scenes
-//import React from 'react';
+
 import { useState, useEffect } from 'react';
 import {Game as GameType} from 'phaser';
 import { allScenes } from '../game_1/scripts/load_all_scenes';
+import io from 'socket.io-client';
 
 
 function Game_Platform() {
@@ -71,10 +72,13 @@ function Game_Platform() {
 
     
 
-    return (
+    return (<>
     <div id="game-content" key= "game-content">
         {/*the game canvas is rendered here */}
     </div>
+    <p id='dashboard'></p>
+    <button id='logout'></button>
+    </>
     );
 };
 
