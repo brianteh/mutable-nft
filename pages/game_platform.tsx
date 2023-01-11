@@ -1,6 +1,6 @@
 // to have multiple games on the same domain, this page can be duplicated
 //the only change needed is the imported scenes
-import React from 'react';
+//import React from 'react';
 import { useState, useEffect } from 'react';
 import {Game as GameType} from 'phaser';
 import { allScenes } from '../game_1/scripts/load_all_scenes';
