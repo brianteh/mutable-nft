@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import {Game as GameType} from 'phaser';
 import { allScenes } from '../game_1/scripts/load_all_scenes';
-import io from 'socket.io-client';
+
 
 
 function Game_Platform() {
@@ -16,7 +16,7 @@ function Game_Platform() {
             /*Start of the configuration settings*/
 
             const Phaser = await import('phaser');
-
+            const haha = "cococ";
             //import engines here
             const {default: GridEngine} = await import('grid-engine');
 
@@ -46,14 +46,18 @@ function Game_Platform() {
                 plugins:{
                     scene: [
                         {
-                          key: "gridEngine",
-                          plugin: GridEngine,
-                          mapping: "gridEngine",
+                            key: "gridEngine",
+                            plugin: GridEngine,
+                            mapping: "gridEngine",
                         },
+
                       ],
                 },
         
-                backgroundColor: '#1c1c1c'
+                backgroundColor: '#1c1c1c',
+                
+               
+
                 
             }
             /*End of the configuration settings*/
@@ -66,6 +70,7 @@ function Game_Platform() {
 
         //run the function above
         initPhaser();
+       
 
     },[]) // the [] is added to ensure the code is only run once (on production but not dev)
           // so, change the react strict mode to false in next.config.js
