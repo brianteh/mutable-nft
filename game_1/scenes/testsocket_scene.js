@@ -22,7 +22,7 @@ export default class testgame_scene extends Scene{
     async create(){
 
         const {io} = await import('socket.io-client')
-        const socket = io('https://mutable-nft-api.onrender.com')
+        const socket = io('https://mutable-nft-api.onrender.com:443')
         
 
         document.getElementById("dashboard").innerHTML="HOHO";// it works
