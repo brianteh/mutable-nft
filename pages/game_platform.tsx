@@ -81,8 +81,6 @@ function Game_Platform() {
     <div id="game-content" key= "game-content">
         {/*the game canvas is rendered here */}
     </div>
-    <p id='dashboard'></p>
-    <button id='logout'></button>
     </>
     );
 };
