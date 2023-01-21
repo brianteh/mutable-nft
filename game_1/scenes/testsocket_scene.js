@@ -22,19 +22,20 @@ export default class testgame_scene extends Scene{
     async create(){
 
         const {io} = await import('socket.io-client')
-        const socket = io('http://localhost:3001')
-        
+        const main_socket = io('http://localhost:3001')
+        const room_socket = io('http://localhost:3001/user')
 
         document.getElementById("dashboard").innerHTML="HOHO";// it works
    
         document.getElementById("logout").innerText="Log out";
         
         document.getElementById("logout").onclick=()=>{
-            socket.emit("send_message",{message:"Hello"})
+            main_socket.emit("send_message",{message:"Hello"})
         }
-        socket.on("receive_message",(data)=>{
+        main_socket.on("receive_message",(data)=>{
             alert(data.message)
         })
+        room_socket.emit()
     
 
     }

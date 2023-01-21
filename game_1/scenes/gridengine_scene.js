@@ -15,18 +15,21 @@ export default class testgame_scene extends Scene{
     preload(){
        
         //testing
-       this.load.spritesheet("player", "/sprites/player.png",{
+       /*this.load.spritesheet("player", "/sprites/player.png",{
         frameWidth: 200,
         frameHeight: 200
-       });
+        //this.load.spritesheet('sokoban','tiles/sokoban_tilesheet.png',)
+            //frameWidth: 64
+       });*/
 
-       this.load.image("tile_1", "/tiles/tile_1.png");
-       console.log("load success");
+       /*this.load.image("tile_1", "/tiles/tile_1.png");
+       console.log("load success");*/
+       
     }
     create(){
 
         //testing
-        const playerSprite = this.physics.add.sprite(0,0,"player")
+        /*const playerSprite = this.physics.add.sprite(0,0,"player")
 
         const gridEngineConfig = {
             characters: [
@@ -54,7 +57,7 @@ export default class testgame_scene extends Scene{
             map.createLayer(index,"tile_1",0,0)
         });
 
-        this.gridEngine.create(map, gridEngineConfig);
+        this.gridEngine.create(map, gridEngineConfig);*/
         
 
     }
