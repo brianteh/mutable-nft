@@ -1,5 +1,6 @@
 import { WagmiConfig, createClient, configureChains} from 'wagmi'
 
+import {alchemyProvider} from 'wagmi/providers/alchemy'
 import { infuraProvider } from 'wagmi/providers/infura'
 import { publicProvider } from 'wagmi/providers/public'
 import {polygonMumbai} from 'wagmi/chains'
@@ -10,7 +11,7 @@ import { FC, ReactNode } from 'react'
 // Two popular providers are Alchemy (alchemy.com) and Infura (infura.io)
 const { chains, provider, webSocketProvider } = configureChains(
  [polygonMumbai],
- [infuraProvider({ apiKey: process.env.infura_api_key || ""}), publicProvider()],
+ [infuraProvider({ apiKey: process.env.infura_api_key || ""}), alchemyProvider({apiKey: process.env.alchemy_api_key || ""}), publicProvider()],
 )
 
 // Set up client
@@ -27,7 +28,7 @@ const client = createClient({
 })
 
 interface WagmiProviderProps{
-    children: any
+    children: ReactNode
 }
 function WagmiProvider({children}:WagmiProviderProps){
     return (<><WagmiConfig client={client}>{children}</WagmiConfig></>)

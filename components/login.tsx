@@ -11,7 +11,7 @@ function Login(){
 
     const handleWalletConnect = async (connector: any)=>{
         const {account, chain} = await connectAsync({connector})
-        //console.log(account,chain)
+        console.log(account,chain)
         if(chain.unsupported){
             alert("Connect with Polygon Mumbai")
             disconnect()

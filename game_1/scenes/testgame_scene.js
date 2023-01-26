@@ -21,7 +21,7 @@ export default class testgame_scene extends Scene{
     create(){
         this.add.image(400,300,'animal1');
         this.add.image(0,0,'background_1');
-
+        this.scene.start("gridengine");
     }
     update(){
         
