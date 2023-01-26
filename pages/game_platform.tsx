@@ -2,7 +2,7 @@
 //the only change needed is the imported scenes
 
 import { useState, useEffect } from 'react';
-import {Game as GameType} from 'phaser';
+import {AUTO, Game as GameType} from 'phaser';
 import { allScenes } from '../game_1/scripts/load_all_scenes';
 
 
@@ -26,8 +26,8 @@ function Game_Platform() {
                 type: Phaser.AUTO,
                 title: 'xxx-game',
                 parent: 'game-content', // correspond to the id of div down below,
-                width: 2000,
-                height: 2000,
+                width: 800,
+                height: 600,
                 pixelArt: true,
         
                 // scale:{
@@ -39,11 +39,12 @@ function Game_Platform() {
                 physics:{
                     default: 'arcade',
                     arcade:{
+                        debug: true,
                         gravity:{y:0}
                     }
                 },
         
-                plugins:{
+                /*plugins:{
                     scene: [
                         {
                             key: "gridEngine",
@@ -52,7 +53,7 @@ function Game_Platform() {
                         },
 
                       ],
-                },
+                },*/
         
                 backgroundColor: '#1c1c1c',
                 

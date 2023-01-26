@@ -7,10 +7,10 @@ async function loadAllScenes(){
     const {default : testsocket_scene} = await import('../scenes/testsocket_scene')
 
     const scenes = [
-        // preloader_scene,
-        // testgame_scene,
-        // gridengine_scene,
-        testsocket_scene
+        preloader_scene,
+        testgame_scene,
+        //gridengine_scene,
+        //testsocket_scene
     ];
 
     return scenes
