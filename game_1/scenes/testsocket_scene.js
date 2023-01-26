@@ -23,7 +23,7 @@ export default class testgame_scene extends Scene{
 
         const {io} = await import('socket.io-client')
         const main_socket = io('http://localhost:3001')
-        const room_socket = io('http://localhost:3001/user')
+        const room_socket = io('http://localhost:3001/user')        
 
         document.getElementById("dashboard").innerHTML="HOHO";// it works
    
