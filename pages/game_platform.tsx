@@ -82,6 +82,12 @@ function Game_Platform() {
     <div id="game-content" key= "game-content">
         {/*the game canvas is rendered here */}
     </div>
+    <div>
+        <p id="x"></p>
+        <p id="y"></p>
+        <p id="mouse_x"></p>
+        <p id="mouse_y"></p>
+    </div>
     </>
     );
 };

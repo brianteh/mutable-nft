@@ -6,3 +6,7 @@ export enum DIRECTION{
     up="up",
     down="down"
 }
+
+export enum DEFAULT{
+    MAX_PLAYER_NUM_PER_ROOM = 2,
+}
