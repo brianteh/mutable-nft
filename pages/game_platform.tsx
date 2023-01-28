@@ -5,18 +5,20 @@ import { useState, useEffect } from 'react';
 import {AUTO, Game as GameType} from 'phaser';
 import { allScenes } from '../game_1/scripts/load_all_scenes';
 
+// type Props={
+//     url:string
+// }
 
+function Game_Platform(/*{url}: Props*/) {
 
-function Game_Platform() {
-   
     const [game, setGame] = useState<GameType>();
 
     useEffect(()=>{
         async function initPhaser(){
             /*Start of the configuration settings*/
-
+            
             const Phaser = await import('phaser');
-            const haha = "cococ";
+
             //import engines here
             const {default: GridEngine} = await import('grid-engine');
 
@@ -83,6 +85,7 @@ function Game_Platform() {
         {/*the game canvas is rendered here */}
     </div>
     <div>
+        <p>{/*url*/}</p>
         <p id="x"></p>
         <p id="y"></p>
         <p id="mouse_x"></p>
@@ -92,4 +95,18 @@ function Game_Platform() {
     );
 };
 
-export default Game_Platform;
+export default Game_Platform
+
+// export async function getStaticProps(){
+//     const dotenv = await import('dotenv');
+//     dotenv.config()
+
+//     console.log(process.env.socket_api_url)
+
+//     return{ 
+//         props:{
+//             url:process.env.socket_api_url
+//         }
+//     }
+
+// }

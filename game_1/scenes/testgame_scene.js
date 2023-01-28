@@ -60,9 +60,10 @@ export default class testgame_scene extends Scene{
 
         const {io} = await import('socket.io-client')
         
-        this.user_socket_interface = new socket_interface(io,this.physics,this.scale)
+        this.user_socket_interface = new socket_interface(io,this.physics,this.scale,process.env.socket_api_key)
         this.user_socket_interface.run()
-       
+
+        
         this.speed = 5 // load from nft
 
         this.boxGroup = this.physics.add.staticGroup()
@@ -143,7 +144,7 @@ export default class testgame_scene extends Scene{
             // this.player.setVelocity(-1*speed,0)
             this.player.play('left-walk',true)
 
-            emit_movement_self_player(this.user_socket_interface?.user_socket,this.user_id,this.player.x,this.player.y)
+            emit_movement_self_player(this.user_socket_interface?.user_socket,this.player.x,this.player.y)
         }
         else if (this.cursors.right.isDown && !box_collision_right){
             
@@ -151,7 +152,7 @@ export default class testgame_scene extends Scene{
             // this.player.setVelocity(1*speed,0)
             this.player.play('right-walk',true)
 
-            emit_movement_self_player(this.user_socket_interface?.user_socket,this.user_id,this.player.x,this.player.y)
+            emit_movement_self_player(this.user_socket_interface?.user_socket,this.player.x,this.player.y)
         }
         else if (this.cursors.up.isDown && !box_collision_up){
             
@@ -159,7 +160,7 @@ export default class testgame_scene extends Scene{
             // this.player.setVelocity(0,-1*speed)
             this.player.play('up-walk',true)
 
-            emit_movement_self_player(this.user_socket_interface?.user_socket,this.user_id,this.player.x,this.player.y)
+            emit_movement_self_player(this.user_socket_interface?.user_socket,this.player.x,this.player.y)
         }
         else if (this.cursors.down.isDown && !box_collision_down){
             
@@ -167,7 +168,7 @@ export default class testgame_scene extends Scene{
             // this.player.setVelocity(0,1*speed)
             this.player.play('down-walk',true)
 
-            emit_movement_self_player(this.user_socket_interface?.user_socket,this.user_id,this.player.x,this.player.y)
+            emit_movement_self_player(this.user_socket_interface?.user_socket,this.player.x,this.player.y)
         }
 
         else{

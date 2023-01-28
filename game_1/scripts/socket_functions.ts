@@ -1,27 +1,9 @@
 import { Socket } from "socket.io-client";
 import { Physics, Scale, Scene } from 'phaser';
-import { DefaultEventsMap } from "@socket.io/component-emitter";
 
-type movement_all_player_data = {
-    user_id: string,
-    user_x: number,
-    user_y: number
-}
-
-type user_property_data_type={
-    walking_speed: number,
-    jumping_power: number
-}
-
-type data_type={
-    user_id: string,
-    user_property: user_property_data_type,
-
-}
 
 interface socketInterface{
-    user_id: string,
-    other_user_ids: string[]
+    other_user_ids: string[],
     player_object_list: any[],
     player_data_list: any[],
     user_socket: Socket
@@ -29,7 +11,6 @@ interface socketInterface{
 
 export class socket_interface implements socketInterface{
   
-    user_id: string
     other_user_ids: string[]
     player_object_list: any[]
     player_data_list: any[]
@@ -37,10 +18,9 @@ export class socket_interface implements socketInterface{
     physics: Physics.Arcade.ArcadePhysics
     scale: Scale.ScaleManager
    
-    constructor(io:any,_physics: Physics.Arcade.ArcadePhysics, _scale: Scale.ScaleManager){
+    constructor(io:any,_physics: Physics.Arcade.ArcadePhysics, _scale: Scale.ScaleManager, api: string){
         
         this.user_socket = io('http://localhost:3001/user')
-        this.user_id = this.user_socket.id
         this.other_user_ids=[]
         this.player_data_list=[]
         this.player_object_list=[]
@@ -62,20 +42,22 @@ export class socket_interface implements socketInterface{
 
         this.user_socket.on('connect',()=>{
 
-            this.user_id = this.user_socket.id;
-            console.log(this.user_id)
             if(this.other_user_ids.length==0) this.user_socket.emit("req_load_prev_player");
     
         })
     
         this.user_socket.on('load_prev_player',(data)=>{
            
-            let prev_player_list = data.all_player.filter((e:any)=>{return e!=this.user_socket.id})
+            let prev_player_id_list = data.all_player.filter((e:any)=>{return e!=this.user_socket.id})
+            let prev_player_pos_list = data.all_player_property.all_player_pos.filter((e:any)=>{return e!=this.user_socket.id})
+            let prev_player_attr_list = data.all_player_property.all_player_attribute.filter((e:any)=>{return e!=this.user_socket.id})
+
+            for(let i = 0; i < prev_player_id_list.length; i++ ){
     
-            for(let i = 0; i < prev_player_list.length; i++ ){
-    
-                let player_id = prev_player_list[i]
-                let player_property = data.user_property
+                let player_id = prev_player_id_list[i]
+                let player_pos = prev_player_pos_list.filter((e:any)=>{return e.player_id == player_id})[0]
+                let player_attr = prev_player_attr_list.filter((e:any)=>{return e.player_id == player_id})[0]
+                let player_property = {pos:{x:player_pos.x,y:player_pos.y},attribute:player_attr}
                 
                 this.player_data_list.push({player_id:player_id,player_property:player_property})
     
@@ -83,8 +65,8 @@ export class socket_interface implements socketInterface{
                     .setSize(40, 16)
                     .setOffset(12, 38)
                     .play('down-idle')
-                    .setX((this.other_user_ids.length+1)*200)
-                    .setY((this.other_user_ids.length+1)*200)
+                    .setX(player_property.pos.x)// load from game state
+                    .setY(player_property.pos.y)
                 
                 this.player_object_list.push({player_id:player_id,player_object:player_object})
                 this.other_user_ids.push(player_id)
@@ -103,13 +85,12 @@ export class socket_interface implements socketInterface{
                 .setSize(40, 16)
                 .setOffset(12, 38)
                 .play('down-idle')
-                .setX((this.other_user_ids.length+1)*200)
-                .setY((this.other_user_ids.length+1)*200)
+                .setX(player_property.pos.x)// load at origin
+                .setY(player_property.pos.y)
     
             this.player_object_list.push({player_id:player_id,player_object:player_object})
             this.other_user_ids.push(player_id)
     
-            // console.log("new player")
         })
     
         this.user_socket.on('player_leaving',(data)=>{
@@ -127,22 +108,18 @@ export class socket_interface implements socketInterface{
                 return e.player_id != data.user_id
             })
             this.player_data_list = this.player_data_list.filter((e)=>{
-                return e.player_id != data.user_id
+                return e.player_id != data.user_id 
             })
-    
-            // console.log(this.player_object_list,1)
-            // console.log(this.other_user_ids,1)
           
         })
 
         this.user_socket.on('movement_all_player',(data)=>{
-            // console.log(this.player_object_list,2)
-            // console.log(this.other_user_ids,2)
+           
             if(this.user_socket.id != data.user_id && this.player_object_list.length > 0){
     
                 let _index = this.player_object_list.findIndex((e)=>{return e.player_id == data.user_id})
     
-                // console.log({user_id: data.user_id,user_x:data.user_x,user_y:data.user_y})
+                //console.log({user_id: data.user_id,user_x:data.user_x,user_y:data.user_y})
                 
                 this.player_object_list[_index].player_object.x = data.user_x
                 this.player_object_list[_index].player_object.y = data.user_y
