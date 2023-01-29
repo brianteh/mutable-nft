@@ -75,7 +75,7 @@ function Game_Platform(/*{url}: Props*/) {
         initPhaser();
        
 
-    },[]) // the [] is added to ensure the code is only run once (on production but not dev)
+    },[/*dependencies*/]) // the [] is added to ensure the code is only run once (on production but not dev)
           // so, change the react strict mode to false in next.config.js
 
     
