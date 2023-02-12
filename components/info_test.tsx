@@ -1,7 +1,7 @@
 
 import { Connector, useAccount, useBalance, useConnect, useDisconnect } from "wagmi";
 
-function Test(){
+function Info_Test(){
     const { address, connector, isConnected } = useAccount()
     const {data, isError, isLoading} = useBalance({address:address})
     return (
@@ -20,4 +20,4 @@ function Test(){
     </div>)
 }
 
-export default Test
+export default Info_Test

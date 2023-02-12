@@ -97,9 +97,8 @@ function Game_Platform(/*{url}: Props*/) {
 
 export default Game_Platform
 
-// export async function getStaticProps(){
-//     const dotenv = await import('dotenv');
-//     dotenv.config()
+// export async function getServerSideProps(){
+    
 
 //     console.log(process.env.socket_api_url)
 

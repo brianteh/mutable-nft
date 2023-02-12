@@ -136,7 +136,6 @@ export default class testgame_scene extends Scene{
 
 
 
-
         // Controls
         if (this.cursors.left.isDown && !box_collision_left){
            

@@ -1,0 +1,11 @@
+Smart Contract{
+
+    interaction between smart contract and domain: 
+    - using wagmi for smart contract call in domain
+    - using wagmi for connectors in domain
+
+    interaction between smart contract and api: 
+    - using ethers for testing smart contract
+    - using ethers for automated withdrawal of fee from smart contract 
+
+} 
