@@ -20,7 +20,7 @@ function WagmiProvider({children,infura_api_key,alchemy_api_key}:WagmiProviderPr
     // Two popular providers are Alchemy (alchemy.com) and Infura (infura.io)
     const { chains, provider, webSocketProvider } = configureChains(
         [polygonMumbai],
-        [infuraProvider({ apiKey: infura_api_key, priority: 0}), alchemyProvider({apiKey: alchemy_api_key, priority:0}), publicProvider({priority: 1})],
+        [infuraProvider({ apiKey: infura_api_key, priority: 1}), alchemyProvider({apiKey: alchemy_api_key, priority:0}), publicProvider({priority: 2})],
     )
     
     // Set up client
