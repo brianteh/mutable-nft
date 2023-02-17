@@ -1,20 +1,20 @@
 import dynamic from "next/dynamic";
-const Read_Test = dynamic(() => import("../components/read_test"), { ssr: false });
+const Write_Test = dynamic(() => import("../components/write_test"), { ssr: false });
 
 import WagmiProvider from '../components/wagmi_context'
 import type { wagmiApiKeyProps } from '../types/api_key_props'
 
-function Read({infura_api_key,alchemy_api_key}:wagmiApiKeyProps){
+function Write({infura_api_key,alchemy_api_key}:wagmiApiKeyProps){
     
     return (<>
         <WagmiProvider infura_api_key={infura_api_key} alchemy_api_key={alchemy_api_key}>
-            <Read_Test></Read_Test>
+            <Write_Test></Write_Test>
         </WagmiProvider>
     </>)
     
 }
 
-export default Read
+export default Write
 
 export async function getServerSideProps(){ 
     return {
