@@ -1,6 +1,6 @@
 ## Environment Setup
 ```bash
-git clone https://github.com/brianteh/muteable-nft.git
+git clone https://github.com/brianteh/mutable-nft.git
 npm i --production
 ```
 
